@@ -1,0 +1,31 @@
+<div data-role="view" 
+     id="time-run-view" 
+     data-id="time-run-view" 
+     data-layout="main-layout" 
+     data-title="Time run" 
+     data-show="app.timeRun.init"
+     data-hide="app.timeRun.close"
+     >
+    <h4>Input time you want to run today </h4>
+    <div id="hours">
+        <label>
+            Hours
+            <input id="variableHoursInput" class="inputBox" type="number" placeholder="Enter hours"/>
+        </label>
+    </div>
+    <div id="minutes">
+        <label>
+            Minutes
+            <input id="variableMinutesInput" class="inputBox" type="number" placeholder="Enter minutes" />
+        </label>
+    </div>
+    <div id="seconds">
+        <label>
+            Seconds
+            <input id="variableSecondsInput" class="inputBox" type="number" placeholder="Enter seconds" />
+        </label>
+    </div>
+ <button id="touchSurface" data-role="touch" data-tap="app.timeRun.run">START</button>
+    <div id="result"/>
+</div>
+
