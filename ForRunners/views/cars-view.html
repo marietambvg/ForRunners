@@ -1,0 +1,43 @@
+<div id="cars-view"
+     data-id="cars-view" 
+     data-role="view"  
+     data-title="Cars"
+     data-layout="main-layout"
+     data-model="app.carsService.viewModel">
+
+    <div class="car">
+        <div class="separator">
+            <div class="dark"></div>
+            <div class="light"></div>
+        </div>
+        <table>
+            <tr>
+                <th class="td">Model</th>
+                <th class="td">Color</th>
+                <th class="td">Year</th>
+                <th class="td">Status</th>
+            </tr>
+        </table>
+
+        <div class="cars-list" 
+             data-role="listview" 
+             data-bind="source: carsDataSource"
+             data-template="cars-template">
+        </div>
+
+        
+    </div>
+</div>
+
+<script type="text/x-kendo-tmpl" id="cars-template">
+    
+        <table>
+            <tr>
+                <td>${model}</td>
+                <td>${color}</td>
+                <td>${year}</td>
+                <td>${status}</td>
+            </tr>
+        </table>
+   
+</script>

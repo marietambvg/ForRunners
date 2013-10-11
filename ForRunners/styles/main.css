@@ -4,6 +4,11 @@ body, html {
     width:100%;
 }
 
+td,th{
+    text-align:center;
+    width:100px;
+}
+
 /* COMMON STYLES*/
 .view-content h1{
     color:#42454a;
@@ -163,15 +168,11 @@ body, html {
 .weather-icon.storm { background-position:0px -384px;}
 
 .position-left{
-    float:left;
+   
 }
-.position-right {
-    float:right;
-}
-.position.center {
-    position:absolute;
-    margin:0 auto;
-    width:100%;
+
+.position-center {
+    margin-left:80px;
 }
 
 /* DEVICE SPECIFIC STYLES*/

@@ -1,0 +1,45 @@
+<div data-role="view" 
+     id="cars-details-view" 
+     data-id="cars-details-view" 
+     data-layout="main-layout" 
+     data-title="Car details" 
+     data-model="app.carsService.viewModel">
+
+    <div data-role="scroller" class="car">
+        <div class="separator">
+            <div class="dark"></div>
+            <div class="light"></div>
+        </div>
+        <ul class="cars-list" 
+            data-role="listview" 
+            data-bind="source: carsDataSource"
+            data-template="cars-details-template">
+        </ul>
+
+    </div>
+</div>
+<script type="text/x-kendo-tmpl" id="cars-details-template">
+    <div>
+        <div class="position-left">
+            <div>
+                <span class="car-info model">Model: ${model}</span>
+            </div>
+            <div>
+                <span class="car-info color">Color: ${color}</span>
+            </div>
+            <div>
+                <span class="car-info status">Status: ${status}</span>
+            </div>
+        </div>
+        <div class="position-center">
+            <span class="car-info model">Taxes:</span>
+        </div>
+        <div class="position-center">
+            <div><span>Per hour: ${rentOptions.hour} EUR</span></div>
+           <div> <span>Per Day: ${rentOptions.day} EUR</span></div>
+           <div> <span>Per Week: ${rentOptions.week} EUR</span></div>
+        </div>
+    
+    </div>
+</script>
+
