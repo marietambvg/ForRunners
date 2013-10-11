@@ -4,35 +4,63 @@
         <title></title>
         <meta charset="utf-8" />
         <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link href="kendo/styles/jquery.mobile-1.1.0.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
         <link href="kendo/styles/kendo.common.min.css" />
         <link href="kendo/styles/kendo.default.min.css" />
 
         <script src="cordova.js"></script>
         <script src="kendo/js/jquery.min.js"></script>
-       <script src="kendo/js/kendo.all.min.js"></script>
+        <script src="kendo/js/jquery.mobile-1.1.0.min.js"></script>
+        <script src="kendo/js/jquery-1.7.2.min.js"></script>
+        <script src="kendo/js/json2.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+        <script src="kendo/js/kendo.mobile.min.js"></script>
 
         <script src="scripts/app.js"></script>
-        <script src="scripts/app/time-run.js"></script>
         <script src="scripts/libs/rsvp.min.js"></script>
+        <script src="scripts/app/time-run.js"></script>
         <script src="scripts/app/http-request.js"></script>
         <script src="scripts/app/categories.js"></script>
-        
+        <script src="scripts/app/connection.js"></script>
 
     </head>
     <body>
-        <!--Home-->
-        <div data-role="view" id="home-view" data-id="home-view" data-layout="main-layout" data-title="Home">
-            <img src="styles/images/bolt.jpeg" width=100% height=100%/>
-         </div> 
+        <!--Home View-->
+        <div data-role="view" 
+             id="home-view" 
+             data-id="home-view" 
+             data-layout="main-layout" 
+             data-title="Home"
+             data-show="app.connectionApi.init" 
+             data-hide="app.connectionApi.close"
+             >
+            <!-- <img src="styles/images/bolt.jpeg" width=100% height=100%/>-->
+            <div data-role="content">
+                <p>
+                    Welcome to the <em>RunTracker</em> app.
+                </p>
+                <p>
+                    Start tracking your run!
+                </p>
+                <div>
+                    <lable class="button" id="home_network_button" data-bind="text: state">Internet Access Enabled</lable>
+                </div>
+                <div>
+                    <button id="home_clearstorage_button">Clear local storage</button>
+                </div>
+            </div>
+
+        </div>
         
+<!-- main-layout view-->
         <div id="main-layout" data-role="layout"  data-id="main-layout" >
             <header data-role="header">
                 <div data-role="navbar">
                     <span data-role="view-title"></span>
                 </div>
             </header>
-            
+
             <footer data-role="footer">
                 <div data-role="tabstrip">
                     <a href="#home-view" data-icon="home">Home</a>

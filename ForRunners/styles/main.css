@@ -10,12 +10,7 @@ td, th
     text-align: center;
     width: 100px;
 }
-#home-view
-{
-    background-image: url(../styles/images/bolt.jpeg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
+
 
 #touchSurface {
         background: blue;
