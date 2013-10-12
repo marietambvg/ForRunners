@@ -1,6 +1,4 @@
 var app = app || {};
-var hours;
-var minutes;
 
 document.addEventListener("deviceready", function() {
     function onStartSuccess(position) {
@@ -67,14 +65,12 @@ document.addEventListener("deviceready", function() {
                         return totalDistance.toFixed(2);
                     },
                 
-                    onError:
-                    function (error) {
+                    onError: function (error) {
                         alert('code: ' + error.code + '\n' +
                               'message: ' + error.message + '\n');
                     },
                 
-                    getCurrentPosition
-                    :function() {
+                    getCurrentPosition:function() {
                         navigator.geolocation.getCurrentPosition(vm.onSuccess, vm.onError);
                     }
                 }
@@ -82,13 +78,10 @@ document.addEventListener("deviceready", function() {
                 a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);            
                 kendo.bind(e.view.element, vm, kendo.mobile.ui);     
             },
-            close
-            : function() { 
-                clearInterval(distanceAPI.timer);
+            close: function() { 
             },
             
-            run
-            : function() {
+            run: function() {
                 var seconds = parseInt(document.getElementById("variable-seconds-input").value) || 0;
                 var minutes = parseInt(document.getElementById("variable-minutes-input").value) || 0;
                 var hours = parseInt(document.getElementById("variable-hours-input").value) || 0;
@@ -99,13 +92,40 @@ document.addEventListener("deviceready", function() {
                 resultBox.innerHTML = 'Entered hours [  ' + hours + ' ], entered minutes [  ' + minutes + ' ] current time[' + currentTime + '] Total miliseconds [' +
                                       time + ' ]';
                 
-                setTimeout(a.timeRun.beep, time);
+                //setTimeout(a.timeRun.beep, time);
+                setTimeout(function () {
+                    a.timeRun.beep(hours, minutes, seconds);
+                }, time);
             },
-            beep
-            :function() {
+            beep: function(hours, minutes,seconds) {
+                navigator.notification.beep(1); 
+                var totalDistance = parseFloat(document.getElementById("distance-result").value);
+                //calculate time;
+                var totalMinutes=(hours*60 + minutes+seconds/60);
+                if(totalMinutes!=0){
+                    var averageSpeed = ((totalDistance * 60) / totalMinutes).toFixed(2)+" km/hour";
+                }
+                else{
+                    averageSpeed="km/hour"
+                }
+                
+                
+                //calculate speeed;
+                var tableBox = document.getElementById("table-results");
+                var speedRow = document.createElement("tr");
+                var speedRowHeader = document.createElement("td");
+                speedRowHeader.innerHTML = "Average speed: ";
+                var speedRowValue = document.createElement("td");
+                speedRowValue.innerHTML = averageSpeed;
+                speedRow.appendChild(speedRowHeader);
+                speedRow.appendChild(speedRowValue);
+                tableBox.appendChild(speedRow);
+                //ask to save;
+                //save in local storage
                 var resultBox = document.getElementById("result-time");
                 resultBox.innerHTML = "Time finished!"
-                navigator.notification.beep(10);
+                
+                clearInterval(a.timeRun.timer);
             }
         };
     }(app));

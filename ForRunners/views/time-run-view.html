@@ -26,9 +26,14 @@
         </label>
     </div>
     <button id="touch-surface" data-role="touch" data-tap="app.timeRun.run">START</button>
-    <div id="result-distance">
-        <lable class="button" id="time-show-button">Track time</lable>
-        <lable class="button" id="distance-show-button" data-bind="text:distance">Run distance</lable>
+    <div id="results">
+        <label class="button" id="time-result">Track time</label>
+        <table id="table-results">
+            <tr>
+                <td>Run distance:</td>
+                 <td id="distance-result" data-bind="text:distance"></td>
+            </tr>
+        </table>
     </div>
     <div id="result-time"/>
 
