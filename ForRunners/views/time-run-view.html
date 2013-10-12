@@ -25,17 +25,32 @@
             <input id="variable-seconds-input" class="inputBox" type="number" placeholder="Enter seconds" />
         </label>
     </div>
-    <button id="touch-surface" data-role="touch" data-tap="app.timeRun.run">START</button>
-    <div id="results">
-        <label class="button" id="time-result">Track time</label>
-        <table id="table-results">
+    
+    <button id="touch-surface" data-role="touch" data-tap="app.timeRun.run">START</button> 
+    <div id="current-distance" data-bind="visible:areVisible" visible=true>
+        <table>
             <tr>
-                <td>Run distance:</td>
-                 <td id="distance-result" data-bind="text:distance"></td>
+                <td>Current run distance</td>
+                <td data-bind="text:distance"></td>
             </tr>
         </table>
     </div>
-    <div id="result-time"/>
+    
+    <div id="results" data-bind="visible:isVisible" visible="false">
+       <div id="result-time" data-bind="text:time"></div>
+        <table id="table-results">
+            <tr>
+                <td>Run distance:</td>
+                <td id="distance-result" data-bind="text:distanceResult"></td>
+                </tr>
+            <tr>
+                <td>Average speed:</td>
+                <td id="speed-result" data-bind="text:speed"></td>
+            </tr>
+        </table>
+        <button id="save-current-workout" >Save current run</button>
+    </div>
+   
 
 </div>
 
