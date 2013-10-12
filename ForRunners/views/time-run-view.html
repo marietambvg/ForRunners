@@ -10,22 +10,27 @@
     <div id="hours">
         <label>
             Hours
-            <input id="variableHoursInput" class="inputBox" type="number" placeholder="Enter hours"/>
+            <input id="variable-hours-input" class="inputBox" type="number" placeholder="Enter hours"/>
         </label>
     </div>
     <div id="minutes">
         <label>
             Minutes
-            <input id="variableMinutesInput" class="inputBox" type="number" placeholder="Enter minutes" />
+            <input id="variable-minutes-input" class="inputBox" type="number" placeholder="Enter minutes" />
         </label>
     </div>
     <div id="seconds">
         <label>
             Seconds
-            <input id="variableSecondsInput" class="inputBox" type="number" placeholder="Enter seconds" />
+            <input id="variable-seconds-input" class="inputBox" type="number" placeholder="Enter seconds" />
         </label>
     </div>
- <button id="touchSurface" data-role="touch" data-tap="app.timeRun.run">START</button>
-    <div id="result"/>
+    <button id="touch-surface" data-role="touch" data-tap="app.timeRun.run">START</button>
+    <div id="result-distance">
+        <lable class="button" id="time-show-button">Track time</lable>
+        <lable class="button" id="distance-show-button" data-bind="text:distance">Run distance</lable>
+    </div>
+    <div id="result-time"/>
+
 </div>
 
