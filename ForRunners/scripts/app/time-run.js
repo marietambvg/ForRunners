@@ -64,7 +64,7 @@ document.addEventListener("deviceready", function() {
                                 totalDistance += vm.gpsDistance(data[i].lat, data[i].lon, data[i + 1].lat, data[i + 1].lon);
                             }
                         }
-                        return totalDistance;
+                        return totalDistance.toFixed(2);
                     },
                 
                     onError:
