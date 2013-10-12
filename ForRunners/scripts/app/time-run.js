@@ -1,15 +1,18 @@
 var app = app || {};
 
 document.addEventListener("deviceready", function() {
-    totalRun = 0;
-    data=[];
+    var totalRun = 0;
+    var data = [];
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    
     function onStartSuccess(position) {
         startLat = position.coords.latitude;
         startLon = position.coords.longitude;
     }
 
-    // onError Callback receives a PositionError object
-    //
+    
     function onStartError(error) {
         navigator.notification.alert('code: ' + error.code + '\n' +
                                      'message: ' + error.message + '\n');
@@ -25,8 +28,6 @@ document.addEventListener("deviceready", function() {
                 
                 var vm = kendo.observable({
                     distance:"Run Distance",
-                    areVisible:true,
-                    
                     
                     gpsDistance:function(lat1, lon1, lat2, lon2) {
                         // http://www.movable-type.co.uk/scripts/latlong.html
@@ -50,7 +51,7 @@ document.addEventListener("deviceready", function() {
                         data.push({"lat":currentLat,"lon":currentLon});
                         var runDistance = vm.calculateCurrentDistance(data);
                         totalRun = runDistance;
-                        vm.set("distance", runDistance+" km.");
+                        vm.set("distance", runDistance + " km.");
                     },
                     
                     calculateCurrentDistance:function(data) {
@@ -70,26 +71,28 @@ document.addEventListener("deviceready", function() {
                     },
                 
                     onError: function (error) {
-                        alert('code: ' + error.code + '\n' +
-                              'message: ' + error.message + '\n');
+                        navigator.notification.alert('code: ' + error.code + '\n' +
+                                                     'message: ' + error.message + '\n');
                     },
                 
                     getCurrentPosition:function() {
                         navigator.geolocation.getCurrentPosition(vm.onSuccess, vm.onError);
                     }
-                } );
-                a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);            
-                kendo.bind(e.view.element, vm, kendo.mobile.ui);     
+                });
+                
+                a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);
+                
+                kendo.bind(e.view.element, vm, kendo.mobile.ui);
             },
             
             close: function() { 
             },
             
             run: function() {
-                var seconds = parseInt(document.getElementById("variable-seconds-input").value) || 0;
-                var minutes = parseInt(document.getElementById("variable-minutes-input").value) || 0;
-                var hours = parseInt(document.getElementById("variable-hours-input").value) || 0;
-                var time = ((hours * 60) + minutes) * 60000 + seconds * 1000; //miliseconds
+                seconds = parseInt(document.getElementById("variable-seconds-input").value) || 0;
+                minutes = parseInt(document.getElementById("variable-minutes-input").value) || 0;
+                hours = parseInt(document.getElementById("variable-hours-input").value) || 0;
+                time = ((hours * 60) + minutes) * 60000 + seconds * 1000; //miliseconds
                 
                 setTimeout(function () {
                     a.timeRun.beep(hours, minutes, seconds);
@@ -113,19 +116,39 @@ document.addEventListener("deviceready", function() {
                     distanceResult:0,
                     speed:0,
                     time:"",
-                    areVisible:false
+                    isInvisible:true
                     
                 });
                           
                 kendo.bind($("#results"), viewModel, kendo.mobile.ui); 
                 kendo.bind($("#current-distance"), viewModel, kendo.mobile.ui);
-                viewModel.set("areVisible", false);
+                viewModel.set("isInvisible", true);
                 viewModel.set("isVisible", true);
                 viewModel.set("speed", averageSpeed);
-                viewModel.set("distanceResult", totalDistance+" km.");
+                viewModel.set("distanceResult", totalDistance + " km.");
                 viewModel.set("time", "Time is finished!");
-            
                 clearInterval(a.timeRun.timer);
+            },
+            
+            save:function() {
+                var currentRun = {
+                    "name":new Date().toDateString() + "/" + new Date().getMilliseconds(),
+                    "distance":totalRun,
+                    "hours":hours,
+                    "minutes":minutes,
+                    "seconds":seconds,
+                }
+                var localStorageData = new Array();
+                localStorageData.push(currentRun);
+                if (window.localStorage.getItem("History")) {
+                    var history = window.localStorage.getItem("History");
+                    var historyArray = JSON.parse(history);
+                    historyArray.push(currentRun);
+                    window.localStorage.setItem("History", JSON.stringify(historyArray));
+                }
+                else {
+                    window.localStorage.setItem("History", JSON.stringify(localStorageData)); 
+                }
             }
         };
     }(app));

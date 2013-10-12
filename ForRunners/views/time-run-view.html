@@ -27,7 +27,8 @@
     </div>
     
     <button id="touch-surface" data-role="touch" data-tap="app.timeRun.run">START</button> 
-    <div id="current-distance" data-bind="visible:areVisible" visible=true>
+    
+    <div id="current-distance" data-bind="invisible:isInvisible" invisible="true">
         <table>
             <tr>
                 <td>Current run distance</td>
@@ -48,7 +49,8 @@
                 <td id="speed-result" data-bind="text:speed"></td>
             </tr>
         </table>
-        <button id="save-current-workout" >Save current run</button>
+        <button data-role="touch" data-tap="app.timeRun.save" id="save-current-workout" >Save current run</button>
+        
     </div>
    
 
