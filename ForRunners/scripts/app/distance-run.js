@@ -175,7 +175,8 @@ document.addEventListener("deviceready", function() {
                 else {
                     window.localStorage.setItem("History", JSON.stringify(localStorageData)); 
                 }
-                 app.application.navigate("#history-view");
+                //app.application.navigate("#history-view");
+                app.application.navigate("views/history-view.html#history-view");
             }
         };
     }(app));

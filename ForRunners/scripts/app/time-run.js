@@ -161,7 +161,7 @@ document.addEventListener("deviceready", function() {
                 }
                 
                 var currentRun = {
-                    "runname":new Date().toDateString() + "/" + new Date().getHours()+ "-" + new Date().getMinutes(),
+                   "runname":new Date().getFullYear() + "-"+new Date().getMonth()+ "-" +new Date().getDate() +"/" +new Date().getHours()+ ":" + new Date().getMinutes(),
                     "rundistance":totalRun,
                     "runtime":runTime,
                     "runspeed":runSpeed,
@@ -178,7 +178,7 @@ document.addEventListener("deviceready", function() {
                 else {
                     window.localStorage.setItem("History", JSON.stringify(localStorageData)); 
                 }
-               app.application.navigate("#history-view");
+               app.application.navigate("views/history-view.html#history-view");
                 
             }
         };

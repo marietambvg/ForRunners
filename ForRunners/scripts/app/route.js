@@ -28,7 +28,7 @@ document.addEventListener("deviceready", function() {
             
             clear:function(){
                 window.localStorage.clear();
-                app.application.navigate("views/history-view.html#history-view");
+                app.application.navigate("#history-view");
             }
             
         };
