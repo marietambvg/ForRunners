@@ -178,9 +178,8 @@ document.addEventListener("deviceready", function() {
                 else {
                     window.localStorage.setItem("History", JSON.stringify(localStorageData)); 
                 }
-                var checkStorage=JSON.parse(window.localStorage.getItem("History"))[0];
-                console.log(checkStorage);
-                console.log(checkStorage.minutes);
+               app.application.navigate("#history-view");
+                
             }
         };
     }(app));

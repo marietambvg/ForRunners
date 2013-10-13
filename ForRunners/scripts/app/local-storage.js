@@ -1,6 +1,14 @@
 var app = app || {};
 
 document.addEventListener("deviceready", function() {
+    
+    var viewModel = kendo.observable({
+        clearLocalStorage: function(e) {
+            window.localStorage.clear();
+        }
+    });
+    kendo.bind($("#home-clearstorage-div"), viewModel);
+    
     (function(a) { 
         a.localStorage = {
             init:function(e) {
@@ -23,7 +31,6 @@ document.addEventListener("deviceready", function() {
             
             close: function() { 
             },
-            
             
         };
     }(app));

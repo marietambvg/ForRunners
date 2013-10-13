@@ -156,7 +156,7 @@ document.addEventListener("deviceready", function() {
                 distanceRunSpeed=(distanceTotalRun/((endTime-startTime)/(1000*3600))).toFixed(2);
                 var currentRun = {
                     
-                    "runname":new Date().toDateString() + "/" + new Date().getHours()+ "-" + new Date().getMinutes(),
+                    "runname":new Date().getFullYear() + "-"+new Date().getMonth()+ "-" +new Date().getDate() +"/" +new Date().getHours()+ ":" + new Date().getMinutes(),
                     "rundistance":distanceTotalRun.toFixed(2),
                     "runtime":distanceRunTime,
                     "runspeed":distanceRunSpeed,
@@ -173,6 +173,7 @@ document.addEventListener("deviceready", function() {
                 else {
                     window.localStorage.setItem("History", JSON.stringify(localStorageData)); 
                 }
+                 app.application.navigate("#history-view");
             }
         };
     }(app));

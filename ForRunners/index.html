@@ -46,8 +46,8 @@
                 <div>
                     <lable class="button" id="home-network-label" data-bind="text: state">Internet Access Enabled</lable>
                 </div>
-                <div>
-                    <button id="home-clearstorage-button">Clear local storage</button>
+                <div id="home-clearstorage-div">
+                    <button id="home-clearstorage-button" data-bind="events: { click: clearLocalStorage}">Clear local storage</button>
                 </div>
             </div>
 
