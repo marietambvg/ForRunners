@@ -1,40 +1,45 @@
 <div id="history-view"
-    data-id="history-view"  
-    data-role="view" 
-    data-title="History" 
-    data-layout="main-layout" 
-    data-model="app.historyService.viewModel">
-    
-   <h4>History of your runs</h4>
-    <div id="history-div">
-        
+     data-id="history-view"  
+     data-role="view" 
+     data-title="History" 
+     data-layout="main-layout" 
+     data-model="app.historyService.viewModel"
+    data-show="app.localStorage.init"
+    >
+
+    <h4>History of your runs</h4>
+    <div data-role="scroller" id="history-div" data-bind="visible:isVisible">
+
         <table>
             <tr>
                 <th class="td">Name</th>
-                <th class="td">Hour</th>
+                <th class="td">Speed</th>
+                <th class="td">Minutes</th>
                 <th class="td">Distance</th>
                 
             </tr>
         </table>
 
-        <div class="history-list" 
+        <ul class="history-list" 
              data-role="listview" 
              data-bind="source: historyDataSource"
              data-template="history-template">
-        </div>
-</div>
+        </ul>
+    </div>
+    <div data-bind="invisible:isInvisible">No stored runs yet!</div>
 
-<script type="text/x-kendo-tmpl" id="history-template">
-    
+    <script type="text/x-kendo-tmpl" id="history-template">
+
         <table>
             <tr>
-                <td>${name}</td>
-                <td>${hours}</td>
-                <td>${distance}</td>
+                <td>${runname}</td>
+                <td>${runspeed}</td>
+                <td>${runtime}</td>
+                <td>${rundistance}</td>
+               
             </tr>
         </table>
-   
-</script>
 
+    </script>
 
 </div>
