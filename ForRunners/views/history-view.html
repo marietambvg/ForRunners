@@ -3,41 +3,51 @@
      data-role="view" 
      data-title="History" 
      data-layout="main-layout" 
-     data-model="app.historyService.viewModel"
-     data-show="app.localStorage.init"
-    >
+     data-show="app.runs.init"
+     >
 
     <h1>History of your runs</h1>
-    <div data-role="scroller" id="history-div" data-bind="visible:isVisible">
-        <table>
-            <tr>
-                <th class="td">Name</th>
-                <th class="td">Speed</th>
-                <th class="td">Minutes</th>
-                <th class="td">Distance</th>
-            </tr>
-        </table>
-
-        <ul class="history-list" 
-             data-role="listview" 
-             data-bind="source: historyDataSource"
-             data-template="history-template"
-             data-bind="selectable: historyDataSource"
+    <select id="histoty-list" data-role="dropdownlist"
+            data-bind="source: runs, events: { change: change}"
+            data-text-field="runname"
+            data-value-field="rundata"
             >
-        </ul>
-         <button data-role="touch" data-tap="app.routeTrack.navigate">Show the route</button>
+    </select>
+    <div id="run-info">
+        <!--<h1 data-bind="text: runname"></h1>-->
+        <ul data-role="listview" data-bind="source: selectedRunData"></ul>
+    </div>
+    
+    <!--<div data-role="scroller" id="history-div" data-bind="visible:isVisible">
+    <table>
+    <tr>
+    <th class="td">Name</th>
+    <th class="td">Speed</th>
+    <th class="td">Minutes</th>
+    <th class="td">Distance</th>
+    </tr>
+    </table>
+
+    <ul class="history-list" 
+    data-role="listview" 
+    data-bind="source: historyDataSource"
+    data-template="history-template"
+    data-bind="selectable: historyDataSource"
+    >
+    </ul>
+    <button data-role="touch" data-tap="app.routeTrack.navigate">Show the route</button>
     </div>
     <div data-bind="invisible:isInvisible">
-        <h2>No stored runs!</h2>
+    <h2>No stored runs!</h2>
     </div>
 
     <script type="text/x-kendo-tmpl" id="history-template">
-            <div>
-                <span>${runname}</span>
-                <span>${runspeed}</span>
-                <span>${runtime}</span>
-                <span>${rundistance}</span>
-            </div>
-    </script>
+    <div>
+    <span>${runname}</span>
+    <span>${runspeed}</span>
+    <span>${runtime}</span>
+    <span>${rundistance}</span>
+    </div>
+    </script>-->
 
 </div>
