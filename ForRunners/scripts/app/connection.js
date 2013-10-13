@@ -30,7 +30,7 @@ var app = app || {};
                     currentState = states[networkState];
                     
                     if (currentState != "No network") {
-                        vm.set("state", states[networkState] + " Connection Enables");
+                        vm.set("state", states[networkState] + " Connection Enabled");
                     }
                     else if(currentState!=previousState){
                         vm.set("state", "No Internet Access");

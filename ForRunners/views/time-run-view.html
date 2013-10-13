@@ -7,35 +7,26 @@
      data-hide="app.timeRun.close"
      >
     <h1>Run for time</h1>
-    <h2>Input time you want to run today </h2>
-    <div id="time-run-user-data" data-bind="visible:userDataVisibility">
-        <div id="hours">
-            <label>
-                Hours
-                <input id="variable-hours-input" class="inputBox" type="number" placeholder="Enter hours"/>
-            </label>
+    <div id="time-run-user-data" data-bind="visible:userDataVisibility" class="view-content">
+        <h2>Input time you want to run today </h2>
+        <div id="hours" class="inputBoxHolder">
+            <input id="variable-hours-input" type="number" placeholder="Enter hours"/>
         </div>
-        <div id="minutes">
-            <label>
-                Minutes
-                <input id="variable-minutes-input" class="inputBox" type="number" placeholder="Enter minutes" />
-            </label>
+        <div id="minutes" class="inputBoxHolder">
+            <input id="variable-minutes-input"  type="number" placeholder="Enter minutes" />
         </div>
-        <div id="seconds">
-            <label>
-                Seconds
-                <input id="variable-seconds-input" class="inputBox" type="number" placeholder="Enter seconds" />
-            </label>
+        <div id="seconds" class="inputBoxHolder">
+            <input id="variable-seconds-input"  type="number" placeholder="Enter seconds" />
         </div>
-        <div class="startButtonHolder">
+        <div class="startButtonHolder" id="time-run-button-start-button-holder">
             <button class="touchSurface" data-role="touch" data-tap="app.timeRun.run">
                 <h3>START </h3>
             </button>
         </div>
     </div>
-   
-    <div id="current-distance" data-bind="invisible:isInvisible" invisible="true">
-        <table>
+
+    <div class="track-distance-holder" id="current-distance" data-bind="invisible:isInvisible" invisible="true">
+        <table class="track-distance">
             <tr>
                 <td>Current run distance</td>
                 <td data-bind="text:distance"></td>
@@ -44,7 +35,9 @@
     </div>
 
     <div id="results" data-bind="visible:isVisible" visible="false">
-        <div id="result-time" data-bind="text:time"></div>
+        <div id="result-time">
+            <h2 data-bind="text:time"></h2>
+        </div>
         <table id="table-results">
             <tr>
                 <td>Run distance:</td>
@@ -55,8 +48,9 @@
                 <td id="speed-result" data-bind="text:speed"></td>
             </tr>
         </table>
-        <button data-role="touch" data-tap="app.timeRun.save" id="save-current-workout" >Save current run</button>
-
+        <div class="startButtonHolder">
+            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-workout"><h3>Save current run</h3></button>
+        </div>
     </div>
 
 </div>

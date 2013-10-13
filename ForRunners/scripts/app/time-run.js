@@ -116,8 +116,6 @@ document.addEventListener("deviceready", function() {
                 a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);
                 
                 kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
-                //vm.set("isVisible", false);
-               // vm.set("isInvisible", false);
                 
                 setTimeout(function () {
                     a.timeRun.beep(hours, minutes, seconds);
@@ -151,7 +149,7 @@ document.addEventListener("deviceready", function() {
                 viewModel.set("isVisible", true);
                 viewModel.set("speed", averageSpeed);
                 viewModel.set("distanceResult", totalDistance + " km.");
-                viewModel.set("time", "Time is finished!");
+                viewModel.set("time", "Time is over!");
                 clearInterval(a.timeRun.timer);
             },
             
