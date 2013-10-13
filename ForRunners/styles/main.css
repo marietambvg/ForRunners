@@ -3,14 +3,18 @@ body, html
     margin: 0; 
     height: 100%;
     width: 100%;
-    background-color:black
-    
 }
 
-h1,h2{
+h1, h2, h3
+{
     text-align: center;
-    margin-bottom:3em;
-    color:#35B3E6
+    color: #35B3E6
+}
+
+h3
+{
+    text-align: center;
+    color: white
 }
 
 td, th
@@ -19,66 +23,19 @@ td, th
     width: 100px;
 }
 
-
-#touchSurface {
-        background: blue;
-        color: white;
-        line-height: 5em;
-        width:100%;
-        text-align: center;
-        font-style: italic;
-        font-size: .9em;
-}
-
-/* COMMON STYLES*/
-.view-content h1
+.touchSurface
 {
-    color: #42454a;
-    font-size: 1.8em;
-}
-.view-content h1.welcome
-{
+    width: 100%;
     text-align: center;
+    height: 3.5em;
+    background-color: #35B3E6;
+    border-style: none;
+    border-radius:5px;
+    margin-top:10px;
 }
-.view-content h3
+.startButtonHolder
 {
-    color: #42454a;
-    font-size: 1.1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
-.view-content p
-{
-    color: #4a4e54;
-    font-size: 1em;
-}
-
-/* IMAGE STYLES*/
-.img
-{
-    background-image: url(../styles/images/icenium.png);
-    background-repeat: no-repeat;
-    text-align: center;
-    width: 320px;
-    height: 193px;
-    margin: 0px auto;
-}
-.logo
-{
-    background-image: url(../styles/images/logo.png);
-    background-repeat: no-repeat;
-    width: 85px;
-    height: 60px;
-    margin: 40px auto;
-}
-
-/* BUTTON STYLES*/
-.buttonArea
-{
-    text-align: center;
-}
-.login-button
-{
-    width: 85%;
-    max-width: 300px;
-    line-height: 1.6em;
-}
-

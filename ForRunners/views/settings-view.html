@@ -8,12 +8,12 @@
      data-hide="app.connectionApi.close"
      >
     
-    <div data-role="content">
-        <div>
-            <lable class="button" id="home-network-label" data-bind="text: state">Internet Access Enabled</lable>
+    <div>
+        <div class="startButtonHolder">
+            <button class="touchSurface" id="home-network-button"><h3 data-bind="text: state">Internet Access Enabled</h3></button>
         </div>
-        <div id="home-clearstorage-div">
-            <button id="home-clearstorage-button" data-role="touch" data-bind="events: { tap: clearLocalStorage}">Clear History</button>
+        <div class="startButtonHolder" id="home-clearstorage-div" >
+            <button class="touchSurface" id="home-clearstorage-button" data-role="touch" data-tap="app.localStorage.clear"><h3>Clear History</h3></button>
         </div>
     </div>
 

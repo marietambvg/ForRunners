@@ -10,20 +10,25 @@
     <div id="distance-run">
         <h1>Run for distance </h1>
         <h2>Input distance you want to run today </h2>
-        <div id="km">
-            <label>
-                Kilometres
-                <input id="variable-km-input" class="inputBox" type="number" placeholder="Enter kilometres"/>
-            </label>
+        <div id="distance-run-user-data" data-bind="visible:userDataVisibility">
+            <div id="km">
+                <label>
+                    Kilometres
+                    <input id="variable-km-input" class="inputBox" type="number" placeholder="Enter kilometres"/>
+                </label>
+            </div>
+            <div id="metrеs">
+                <label>
+                    Metres
+                    <input id="variable-metres-input" class="inputBox" type="number" placeholder="Enter metres" />
+                </label>
+            </div>
+            <div class="startButtonHolder">
+                <button class="touchSurface" id="distance-run-start-button" data-role="touch" data-tap="app.distanceRun.run">
+                    <h3>START</h3>
+                </button>
+            </div>
         </div>
-        <div id="metrеs">
-            <label>
-                Metres
-                <input id="variable-metres-input" class="inputBox" type="number" placeholder="Enter metres" />
-            </label>
-        </div>
-        <button class="button" id="distance-run-start-button" data-role="touch" data-tap="app.distanceRun.run">START</button>
-
         <div id="distance-current-distance" data-bind="invisible:isInvisible" invisible="true">
             <table>
                 <tr>

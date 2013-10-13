@@ -33,7 +33,8 @@ document.addEventListener("deviceready", function() {
                     distanceResult:0,
                     speed:0,
                     status:"",
-                    isInvisible:true
+                    isInvisible:true,
+                    userDataVisibility:true,
                 })
                 kendo.bind(e.view.element, vm, kendo.mobile.ui);
                 vm.set("distance", "run distance");
@@ -55,6 +56,7 @@ document.addEventListener("deviceready", function() {
                     speed:0,
                     time:"",
                     isInvisible:false,
+                    userDataVisibility:false,
                     
                     getCurrentPosition:function() {
                         navigator.geolocation.getCurrentPosition(vm.onSuccess, vm.onError);
