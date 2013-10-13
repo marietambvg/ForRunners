@@ -4,41 +4,43 @@
      data-title="History" 
      data-layout="main-layout" 
      data-model="app.historyService.viewModel"
-    data-show="app.localStorage.init"
+     data-show="app.localStorage.init"
     >
 
-    <h4>History of your runs</h4>
+    <h1>History of your runs</h1>
     <div data-role="scroller" id="history-div" data-bind="visible:isVisible">
-
         <table>
             <tr>
                 <th class="td">Name</th>
                 <th class="td">Speed</th>
                 <th class="td">Minutes</th>
                 <th class="td">Distance</th>
-                
             </tr>
         </table>
 
         <ul class="history-list" 
              data-role="listview" 
              data-bind="source: historyDataSource"
-             data-template="history-template">
+             data-template="history-template"
+             data-bind="selectable: historyDataSource"
+            >
         </ul>
     </div>
-    <div data-bind="invisible:isInvisible">No stored runs yet!</div>
+    <div data-bind="invisible:isInvisible">
+        <h2>No stored runs yet!</h2>
+    </div>
 
     <script type="text/x-kendo-tmpl" id="history-template">
 
-        <table>
-            <tr>
-                <td>${runname}</td>
-                <td>${runspeed}</td>
-                <td>${runtime}</td>
-                <td>${rundistance}</td>
+        
+            <div>
+                <span>${runname}</span>
+                <span>${runspeed}</span>
+                <span>${runtime}</span>
+                <span>${rundistance}</span>
                
-            </tr>
-        </table>
+            </div>
+       
 
     </script>
 

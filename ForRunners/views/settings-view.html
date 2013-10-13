@@ -1,0 +1,21 @@
+<!--Settings View-->
+<div data-role="view" 
+     id="settings-view" 
+     data-id="settings-view" 
+     data-layout="main-layout" 
+     data-title="Settings"
+     data-show="app.connectionApi.init" 
+     data-hide="app.connectionApi.close"
+     >
+    
+    <div data-role="content">
+        <div>
+            <lable class="button" id="home-network-label" data-bind="text: state">Internet Access Enabled</lable>
+        </div>
+        <div id="home-clearstorage-div">
+            <button id="home-clearstorage-button" data-role="touch" data-bind="events: { tap: clearLocalStorage}">Clear History</button>
+        </div>
+    </div>
+
+</div>
+

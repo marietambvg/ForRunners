@@ -21,7 +21,7 @@
         <script src="scripts/app/time-run.js"></script>
         <script src="scripts/app/distance-run.js"></script>
         <script src="scripts/app/connection.js"></script>
-         <script src="scripts/app/local-storage.js"></script>
+        <script src="scripts/app/local-storage.js"></script>
         <script src="scripts/app/history.js"></script>
 
     </head>
@@ -33,27 +33,27 @@
              data-layout="main-layout" 
              data-title="Home"
              data-show="app.connectionApi.init" 
-             data-hide="app.connectionApi.close"
+          
              >
             <!-- <img src="styles/images/bolt.jpeg" width=100% height=100%/>-->
             <div data-role="content">
-                <p>
-                    Welcome to the <em>RunTracker</em> app.
-                </p>
-                <p>
-                    Start tracking your run!
-                </p>
-                <div>
-                    <lable class="button" id="home-network-label" data-bind="text: state">Internet Access Enabled</lable>
-                </div>
-                <div id="home-clearstorage-div">
-                    <button id="home-clearstorage-button" data-bind="events: { click: clearLocalStorage}">Clear local storage</button>
-                </div>
+                <heading>
+                    <h1>
+                        Welcome <br><br>
+                        to<br><br>
+                        Run Tracker
+
+                    </h1>
+                </heading>
+                <h2>
+                    Start tracking your runs!
+                </h2>
+
             </div>
 
         </div>
-        
-<!-- main-layout view-->
+
+        <!-- main-layout view-->
         <div id="main-layout" data-role="layout"  data-id="main-layout" >
             <header data-role="header">
                 <div data-role="navbar">
@@ -67,7 +67,7 @@
                     <a href="views/time-run-view.html#time-run-view" data-icon="recents">Time Run</a>
                     <a href="views/distance-run-view.html#distance-run-view" data-icon="fastforward">Distance Run</a>
                     <a href="views/history-view.html#history-view" data-icon="toprated" >History</a>
-                    <a href="views/contacts-view.html#contacts-view" data-icon="contacts">Contacts</a>
+                    <a href="views/settings-view.html#settings-view" data-icon="settings">Settings</a>
                 </div>
             </footer>
         </div>

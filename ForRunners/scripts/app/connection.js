@@ -35,6 +35,7 @@ var app = app || {};
                     else if(currentState!=previousState){
                         vm.set("state", "No Internet Access");
                         navigator.notification.beep(3);
+                        navigator.notification.vibrate(2000);
                     }
                     else {
                         vm.set("state", "No Internet Access");
@@ -42,7 +43,7 @@ var app = app || {};
                 }
             });
             connectionAPI.timer = setInterval(vm.update, 5000);            
-            kendo.bind(e.view.element, vm, kendo.mobile.ui);       
+            kendo.bind($("#settings-view"), vm, kendo.mobile.ui);       
         },
         close: function() {
             clearInterval(connectionAPI.timer);
