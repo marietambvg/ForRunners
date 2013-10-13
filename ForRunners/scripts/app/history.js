@@ -4,6 +4,7 @@
     
     HistoryViewModel = kendo.data.ObservableObject.extend({
         historyDataSource: null,
+        historyIsSelectable:true,
         
         init: function () {
             var that = this,
@@ -18,7 +19,8 @@
                 dataSource=new Array();
             }
             
-            that.set("historyDataSource", dataSource);           
+            that.set("historyDataSource", dataSource);  
+            that.set("historyIsSelectable", true);
         }        
     });  
     
