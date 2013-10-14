@@ -82,7 +82,7 @@ var app = app || {};
 
                 // Apply the line to the map
                 trackPath.setMap(map);
-                //app.application.navigate("views/route-view.html#route-view")
+            
         
     }
     a.runs = {

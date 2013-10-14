@@ -96,8 +96,16 @@ input
 }
 #network-button
 {
-    margin-top: 45%;
-    margin-bottom: 80%;
+    margin-top: 20%;
+    margin-bottom:20px;
+}
+#home-clearstorage-button
+{
+    margin-bottom:20px;
+}
+
+.content .startButtonHolder{
+    margin-bottom:20px;
 }
 
 #distance-run-button-start-button-holder

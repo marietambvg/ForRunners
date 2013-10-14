@@ -30,7 +30,6 @@ document.addEventListener("deviceready", function() {
                 window.localStorage.clear();
                 app.application.navigate("views/history-view.html#history-view");
             }
-            
         };
     }(app));
 });
