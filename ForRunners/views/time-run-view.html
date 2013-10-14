@@ -51,9 +51,15 @@
                 <td>Average speed:</td>
                 <td id="speed-result" data-bind="text:speed"></td>
             </tr>
+            <tr>
+                <td>Run time:</td>
+                <td id="distance-time-result" data-bind="text:currentRunTime"></td>
+            </tr>
         </table>
         <div class="startButtonHolder">
-            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-workout"><h3>Save current run</h3></button>
+            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-workout">
+                <h3>Save current run</h3>
+            </button>
         </div>
     </div>
 

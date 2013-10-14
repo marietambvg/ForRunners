@@ -7,7 +7,7 @@ document.addEventListener("deviceready", function() {
     var minutes = 0;
     var seconds = 0;
     var runSpeed = 0;
-     var runTime = 0;
+    var runTime = 0;
     var timeLeft=0;
     
     function onStartSuccess(position) {
@@ -150,7 +150,8 @@ document.addEventListener("deviceready", function() {
                     distanceResult:0,
                     speed:0,
                     time:"",
-                    isInvisible:true
+                    isInvisible:true,
+                    currentRunTime:time/1000+" sec." 
                     
                 });
                           
@@ -161,6 +162,7 @@ document.addEventListener("deviceready", function() {
                 viewModel.set("speed", averageSpeed);
                 viewModel.set("distanceResult", totalDistance + " km.");
                 viewModel.set("time", "Time is over!");
+                viewModel.set("currentRunTime", time/1000+" sec.");
                 clearInterval(a.timeRun.timer);
                 clearInterval(a.timeRun.timerTimeLeft);
             },

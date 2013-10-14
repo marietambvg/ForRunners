@@ -5,6 +5,7 @@ document.addEventListener("deviceready", function() {
     var distanceTotalRun = 0;
     var distanceData = [];
     var startTime;
+    var currentRunTime=0;
     var endTime;
     var distanceRunTime;
     var distanceRunSpeed;
@@ -35,6 +36,8 @@ document.addEventListener("deviceready", function() {
                     status:"",
                     isInvisible:true,
                     userDataVisibility:true,
+                   
+                    
                 })
                 kendo.bind(e.view.element, vm, kendo.mobile.ui);
                 vm.set("distance", "run distance");
@@ -43,6 +46,7 @@ document.addEventListener("deviceready", function() {
                 vm.set("speed", "0");
                 vm.set("status", "");
                 vm.set("isInvisible", true);
+               
             },
             
             close: function() { 
@@ -57,6 +61,7 @@ document.addEventListener("deviceready", function() {
                     time:"",
                     isInvisible:false,
                     userDataVisibility:false,
+                    currentRunTime:currentRunTime+" sec.",
                     
                     getCurrentPosition:function() {
                         navigator.geolocation.getCurrentPosition(vm.onSuccess, vm.onError);
@@ -117,12 +122,19 @@ document.addEventListener("deviceready", function() {
                 startTime = Date.now();
                 distancePlanRun = (parseInt($("#variable-km-input").val()) || 0) + (parseInt($("#variable-metres-input").val()) || 0) / 1000;
                 a.distanceRun.timer = setInterval(vm.getCurrentPosition, 5000);
+                a.distanceRun.timerTimeCounter = setInterval(function(){
+                    currentRunTime++;
+                    vm.set("currentRunTime",currentRunTime+" sec.")
+                }, 1000);
+                
                
             },
             
             beep: function() {
                 navigator.notification.beep(1); 
                 clearInterval(a.distanceRun.timer);
+                clearInterval(a.distanceRun.timerTimeCounter);
+                
                 var totalDistance = parseFloat(distanceTotalRun);
                 //calculate time;
                 endTime = Date.now();
@@ -139,7 +151,8 @@ document.addEventListener("deviceready", function() {
                     distanceResult:0,
                     speed:0,
                     status:"",
-                    isInvisible:true
+                    isInvisible:true,
+                    currentRunTime:currentRunTime+" sec.",
                     
                 });
                           
@@ -150,6 +163,7 @@ document.addEventListener("deviceready", function() {
                 viewModel.set("speed", averageSpeed);
                 viewModel.set("distanceResult", totalDistance + " km.");
                 viewModel.set("status", "You run planned distance!");
+                viewModel.set("currentTimeRun", currentRunTime+" sec.");
                 
             },
             

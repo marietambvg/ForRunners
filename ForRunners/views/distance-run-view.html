@@ -9,7 +9,7 @@
 
     <div id="distance-run">
         <h1>Run for distance </h1>
-        
+
         <div id="distance-run-user-data" data-bind="visible:userDataVisibility">
             <h2>Input distance you want to run today </h2>
             <div id="km" class="inputBoxHolder">
@@ -31,6 +31,10 @@
                     <td>Current run distance</td>
                     <td data-bind="text:distance"></td>
                 </tr>
+                <tr>
+                    <td>Current run time</td>
+                    <td data-bind="text:currentRunTime"></td>
+                </tr>
             </table>
         </div>
 
@@ -46,6 +50,10 @@
                 <tr>
                     <td>Average speed:</td>
                     <td id="distance-speed-result" data-bind="text:speed"></td>
+                </tr>
+                <tr>
+                    <td>Run time:</td>
+                    <td id="distance-time-result" data-bind="text:currentRunTime"></td>
                 </tr>
             </table>
             <div class="startButtonHolder">
