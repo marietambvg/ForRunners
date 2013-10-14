@@ -6,8 +6,9 @@ document.addEventListener("deviceready", function() {
     var hours = 0;
     var minutes = 0;
     var seconds = 0;
-     var runSpeed = 0;
+    var runSpeed = 0;
      var runTime = 0;
+    var timeLeft=0;
     
     function onStartSuccess(position) {
         startLat = position.coords.latitude;
@@ -49,14 +50,21 @@ document.addEventListener("deviceready", function() {
             },
             
             run: function() {
+                seconds = parseInt(document.getElementById("variable-seconds-input").value) || 0;
+                minutes = parseInt(document.getElementById("variable-minutes-input").value) || 0;
+                hours = parseInt(document.getElementById("variable-hours-input").value) || 0;
+                time = ((hours * 60) + minutes) * 60000 + seconds * 1000; //miliseconds
+                timeLeft=time/1000;
+                
                 var vm = kendo.observable({
-                    distance:"0 km",
+                    distance:"0.00 km.",
                     isVisible:false,
                     distanceResult:0,
                     speed:0,
                     time:"",
                     isInvisible:false,
                     userDataVisibility:false,
+                    timeLeft:timeLeft+" sec",
                     
                     gpsDistance:function(lat1, lon1, lat2, lon2) {
                         // http://www.movable-type.co.uk/scripts/latlong.html
@@ -108,14 +116,17 @@ document.addEventListener("deviceready", function() {
                         navigator.geolocation.getCurrentPosition(vm.onSuccess, vm.onError);
                     }
                 });
-                seconds = parseInt(document.getElementById("variable-seconds-input").value) || 0;
-                minutes = parseInt(document.getElementById("variable-minutes-input").value) || 0;
-                hours = parseInt(document.getElementById("variable-hours-input").value) || 0;
-                time = ((hours * 60) + minutes) * 60000 + seconds * 1000; //miliseconds
+                
                 
                 a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);
+                a.timeRun.timerTimeLeft=setInterval(
+                    function(){
+                        timeLeft--;
+                        vm.set("timeLeft",timeLeft+" sec");
+                    }, 1000);
                 
                 kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
+                    
                 
                 setTimeout(function () {
                     a.timeRun.beep(hours, minutes, seconds);
@@ -151,6 +162,7 @@ document.addEventListener("deviceready", function() {
                 viewModel.set("distanceResult", totalDistance + " km.");
                 viewModel.set("time", "Time is over!");
                 clearInterval(a.timeRun.timer);
+                clearInterval(a.timeRun.timerTimeLeft);
             },
             
             save:function() {
